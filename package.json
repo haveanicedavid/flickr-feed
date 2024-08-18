@@ -1,0 +1,8 @@
+{
+  "name": "flickr-feed-app",
+  "version": "1.0.0",
+  "description": "Code challenge for Buzz Solutions",
+  "main": "index.js",
+  "author": "David Daniel",
+  "license": "ISC"
+}
