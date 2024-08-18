@@ -4,5 +4,10 @@
   "description": "Code challenge for Buzz Solutions",
   "main": "index.js",
   "author": "David Daniel",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "start": "pnpm run --parallel start",
+    "build": "pnpm run --parallel build",
+    "test": "pnpm run --parallel test"
+  }
 }
