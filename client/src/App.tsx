@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container } from 'react-bootstrap'
+
 import { ImageGallery } from './components/image-gallery'
 
 function App() {

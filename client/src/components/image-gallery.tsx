@@ -1,30 +1,18 @@
-import { useState, useEffect } from 'react'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Card from 'react-bootstrap/Card'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
 
-interface Photo {
-  id: string
-  owner: string
-  secret: string
-  server: string
-  farm: number
-  title: string
-}
+import { trpc } from '../db/trpc';
 
 export function ImageGallery() {
-  const [photos, setPhotos] = useState<Photo[]>([])
+  const { data: photos, isLoading, error } = trpc.getPhotos.useQuery();
 
-  useEffect(() => {
-    fetch('http://localhost:5000/api/photos')
-      .then((response) => response.json())
-      .then((data) => setPhotos(data.photos.photo))
-      .catch((error) => console.error('Error fetching photos:', error))
-  }, [])
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>An error occurred: {error.message}</div>;
 
   return (
     <Row xs={1} md={2} lg={3} className="g-4">
-      {photos.map((photo) => (
+      {photos?.map((photo) => (
         <Col key={photo.id}>
           <Card>
             <Card.Img
@@ -39,5 +27,5 @@ export function ImageGallery() {
         </Col>
       ))}
     </Row>
-  )
+  );
 }
