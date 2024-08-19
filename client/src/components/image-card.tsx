@@ -16,11 +16,12 @@ export function ImageCard({ photo, viewType }: Props) {
   const imgStyle = {
     objectFit: 'cover' as const,
     width: viewType === 'grid' ? '100%' : '150px',
-    height: viewType === 'grid' ? '200px' : '150px', // Set a fixed height for grid view
+    height: viewType === 'grid' ? '200px' : '150px',
+    borderRadius: viewType === 'grid' ? '8px 8px 0 0' : '8px 0 0 8px',
   }
 
   return (
-    <Card className={viewType === 'grid' ? 'w-100' : 'flex-row'}>
+    <Card className={`${viewType === 'grid' ? 'w-100' : 'flex-row'} mb-3`}>
       <div style={imgStyle}>
         {!imageLoaded && (
           <Placeholder as="div" animation="glow" className="w-100 h-100">
@@ -44,3 +45,4 @@ export function ImageCard({ photo, viewType }: Props) {
     </Card>
   )
 }
+

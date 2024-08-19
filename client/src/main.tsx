@@ -7,6 +7,8 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.tsx'
 import { trpc } from './db/trpc'
 
+import './app-theme.css'
+
 const queryClient = new QueryClient()
 const trpcClient = trpc.createClient({
   links: [

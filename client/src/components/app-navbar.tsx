@@ -7,6 +7,8 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link, useNavigate } from 'react-router-dom'
 
+import { DarkModeToggle } from './dark-mode-toggle'
+
 export function AppNavbar() {
   const [searchTag, setSearchTag] = useState('')
   const navigate = useNavigate()
@@ -19,7 +21,7 @@ export function AppNavbar() {
   }
 
   return (
-    <Navbar bg="light" expand="lg" className="mb-4">
+    <Navbar expand="lg" className="mb-4">
       <Container>
         <Navbar.Brand as={Link} to="/">
           Flickr Feed
@@ -44,6 +46,7 @@ export function AppNavbar() {
               </Button>
             </InputGroup>
           </Form>
+          <DarkModeToggle />
         </Navbar.Collapse>
       </Container>
     </Navbar>

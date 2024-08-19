@@ -28,7 +28,7 @@ export function ImageGallery({ photos, refreshPhotos }: Props) {
           Refresh Photos
         </Button>
         <Dropdown>
-          <Dropdown.Toggle variant="secondary" id="dropdown-view-type">
+          <Dropdown.Toggle variant="primary" id="dropdown-view-type">
             View: {viewType.charAt(0).toUpperCase() + viewType.slice(1)}
           </Dropdown.Toggle>
           <Dropdown.Menu>
