@@ -1,9 +1,9 @@
 # Flickr Feed
 
-## Instructions
+## Local Setup
 
-Write a simple web application that reads data from Flickr's public feeds and
-displays the images on the page to the user. Please check the Flickr API
-documentation from the following URL:
-• [Flickr](https://www.flickr.com/services/feeds/)
-• [Public feed](https://api.flickr.com/services/feeds/photos_public.gne)
+1. Make sure you have [pnpm](https://pnpm.io) set up
+1. Clone this repo
+1. `pnpm install`
+1. `cp server/.env.example server/.env` and add your flickr API key
+1. `pnpm start`

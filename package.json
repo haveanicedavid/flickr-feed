@@ -9,5 +9,9 @@
     "start": "pnpm run --parallel start",
     "build": "pnpm run --parallel build",
     "test": "pnpm run --parallel test"
-  }
+  },
+  "engines": {
+    "node": ">18.19.1"
+  },
+  "type": "module"
 }
