@@ -5,6 +5,10 @@ import { trpc } from '../db/trpc'
 import { createMockPhotos } from '../utils/test'
 import HomePage from './home'
 
+vi.mock('react-router-dom', () => ({
+  useNavigate: vi.fn(),
+}))
+
 vi.mock('../db/trpc', () => ({
   trpc: {
     getPhotos: {

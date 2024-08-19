@@ -9,6 +9,7 @@ import TagPage from './tag'
 vi.mock('react-router-dom', () => ({
   useParams: vi.fn(),
   redirect: vi.fn(),
+  useNavigate: vi.fn(),
 }))
 
 vi.mock('../db/trpc', () => ({
