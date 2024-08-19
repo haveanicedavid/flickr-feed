@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+import { useNavigate } from 'react-router-dom'
 
 export default function NotFoundPage() {
   const navigate = useNavigate()

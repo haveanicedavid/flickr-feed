@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
-import { redirect, useParams } from 'react-router-dom'
 import { vi } from 'vitest'
+import { redirect, useParams } from 'react-router-dom'
+
 import { trpc } from '../db/trpc'
 import { createMockPhotos } from '../utils/test'
 import TagPage from './tag'

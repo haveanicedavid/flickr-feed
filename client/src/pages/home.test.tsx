@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { vi } from 'vitest'
+
 import { trpc } from '../db/trpc'
 import { createMockPhotos } from '../utils/test'
 import HomePage from './home'

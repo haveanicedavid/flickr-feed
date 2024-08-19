@@ -1,6 +1,6 @@
-import { trpc } from '../db/trpc'
 import { ImageGallery } from '../components/image-gallery'
 import { LoadingSpinner } from '../components/loading-spinner'
+import { trpc } from '../db/trpc'
 
 export default function HomePage() {
   const { data: photos, isLoading, error } = trpc.getPhotos.useQuery()

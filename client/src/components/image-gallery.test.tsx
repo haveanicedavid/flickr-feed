@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 
-import { ImageGallery } from './image-gallery'
 import { createMockPhotos } from '../utils/test'
+import { ImageGallery } from './image-gallery'
 
 describe('ImageGallery', () => {
   it('renders photos', () => {

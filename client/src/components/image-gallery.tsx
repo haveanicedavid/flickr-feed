@@ -1,14 +1,13 @@
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
+import Card from 'react-bootstrap/Card'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
-import { getFlickrImageSrc } from '../utils/image';
-
-import type { Photo } from '../db/types';
+import type { Photo } from '../db/types'
+import { getFlickrImageSrc } from '../utils/image'
 
 type Props = {
-  photos?: Photo[];
-};
+  photos?: Photo[]
+}
 
 export function ImageGallery({ photos }: Props) {
   return (
@@ -29,5 +28,5 @@ export function ImageGallery({ photos }: Props) {
         </Col>
       ))}
     </Row>
-  );
+  )
 }

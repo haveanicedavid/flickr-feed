@@ -1,7 +1,7 @@
 import { initTRPC } from '@trpc/server'
-import { z } from 'zod'
-import { createFlickr } from 'flickr-sdk'
 import dotenv from 'dotenv'
+import { createFlickr } from 'flickr-sdk'
+import { z } from 'zod'
 
 import type { FlickrPhoto } from './types'
 
@@ -33,4 +33,3 @@ export const appRouter = trpc.router({
       return response.photos.photo
     }),
 })
-

@@ -1,22 +1,22 @@
-import { Outlet, useNavigate, Link } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Button from 'react-bootstrap/Button';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import { useState } from 'react';
+import { useState } from 'react'
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Form from 'react-bootstrap/Form'
+import InputGroup from 'react-bootstrap/InputGroup'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 
 export function AppLayout() {
-  const [searchTag, setSearchTag] = useState('');
-  const navigate = useNavigate();
+  const [searchTag, setSearchTag] = useState('')
+  const navigate = useNavigate()
 
   const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     if (searchTag.trim()) {
-      navigate(`/tags/${encodeURIComponent(searchTag.trim())}`);
+      navigate(`/tags/${encodeURIComponent(searchTag.trim())}`)
     }
-  };
+  }
 
   return (
     <>
@@ -52,5 +52,5 @@ export function AppLayout() {
         <Outlet />
       </Container>
     </>
-  );
+  )
 }
