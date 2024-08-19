@@ -8,7 +8,15 @@ import { appRouter } from './trpc'
 dotenv.config()
 
 const app = express()
-app.use(cors())
+
+const isProduction = process.env.NODE_ENV === 'production'
+
+app.use(
+  cors({
+    origin: isProduction ? 'https://flickr-feed-app.vercel.app' : '*',
+    credentials: true,
+  })
+)
 
 app.use(
   '/trpc',
@@ -18,6 +26,7 @@ app.use(
 )
 
 const PORT = process.env.PORT || 5000
-app.listen(PORT, () => {
+
+app.listen(Number(PORT), '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`)
 })
