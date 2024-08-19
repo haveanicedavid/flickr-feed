@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Row from 'react-bootstrap/Row'
@@ -8,11 +9,12 @@ import { ImageCard } from './image-card'
 
 type Props = {
   photos?: Photo[]
+  refreshPhotos: () => void
 }
 
 type ViewType = 'grid' | 'list'
 
-export function ImageGallery({ photos }: Props) {
+export function ImageGallery({ photos, refreshPhotos }: Props) {
   const [viewType, setViewType] = useState<ViewType>('grid')
 
   const handleViewChange = (selectedViewType: ViewType) => {
@@ -21,7 +23,10 @@ export function ImageGallery({ photos }: Props) {
 
   return (
     <>
-      <div className="d-flex justify-content-end mb-3">
+      <div className="d-flex justify-content-between mb-3">
+        <Button onClick={refreshPhotos} className="mb-3">
+          Refresh Photos
+        </Button>
         <Dropdown>
           <Dropdown.Toggle variant="secondary" id="dropdown-view-type">
             View: {viewType.charAt(0).toUpperCase() + viewType.slice(1)}
