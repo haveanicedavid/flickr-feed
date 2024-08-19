@@ -9,7 +9,7 @@ import { ImageCard } from './image-card'
 
 type Props = {
   photos?: Photo[]
-  refreshPhotos: () => void
+  refreshPhotos?: () => void
 }
 
 type ViewType = 'grid' | 'list'
@@ -24,9 +24,11 @@ export function ImageGallery({ photos, refreshPhotos }: Props) {
   return (
     <>
       <div className="d-flex justify-content-between mb-3">
-        <Button onClick={refreshPhotos} className="mb-3">
-          Refresh Photos
-        </Button>
+        {refreshPhotos && (
+          <Button onClick={refreshPhotos} className="mb-3">
+            Refresh Photos
+          </Button>
+        )}
         <Dropdown>
           <Dropdown.Toggle variant="primary" id="dropdown-view-type">
             View: {viewType.charAt(0).toUpperCase() + viewType.slice(1)}
@@ -49,7 +51,11 @@ export function ImageGallery({ photos, refreshPhotos }: Props) {
         className="g-4"
       >
         {photos?.map((photo) => (
-          <Col key={photo.id} className={viewType === 'grid' ? 'd-flex' : ''}>
+          <Col
+            key={photo.id}
+            className={viewType === 'grid' ? 'd-flex' : ''}
+            data-testid="photo-column"
+          >
             <ImageCard photo={photo} viewType={viewType} />
           </Col>
         ))}
