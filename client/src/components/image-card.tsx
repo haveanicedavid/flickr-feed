@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Card from 'react-bootstrap/Card'
 import Placeholder from 'react-bootstrap/Placeholder'
+import { useNavigate } from 'react-router-dom'
 
 import type { Photo } from '../db/types'
 import { getFlickrImageSrc } from '../utils/image'
@@ -12,6 +13,7 @@ type Props = {
 
 export function ImageCard({ photo, viewType }: Props) {
   const [imageLoaded, setImageLoaded] = useState(false)
+  const navigate = useNavigate()
 
   const imgStyle = {
     objectFit: 'cover' as const,
@@ -20,8 +22,16 @@ export function ImageCard({ photo, viewType }: Props) {
     borderRadius: viewType === 'grid' ? '8px 8px 0 0' : '8px 0 0 8px',
   }
 
+  const handleClick = () => {
+    navigate(`/images/${photo.id}`)
+  }
+
   return (
-    <Card className={`${viewType === 'grid' ? 'w-100' : 'flex-row'} mb-3`}>
+    <Card
+      className={`${viewType === 'grid' ? 'w-100' : 'flex-row'} mb-3`}
+      onClick={handleClick}
+      style={{ cursor: 'pointer' }}
+    >
       <div style={imgStyle}>
         {!imageLoaded && (
           <Placeholder as="div" animation="glow" className="w-100 h-100">
@@ -45,4 +55,3 @@ export function ImageCard({ photo, viewType }: Props) {
     </Card>
   )
 }
-

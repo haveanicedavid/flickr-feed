@@ -4,7 +4,7 @@ import { createFlickr } from 'flickr-sdk'
 import NodeCache from 'node-cache'
 import { z } from 'zod'
 
-import type { FlickrPhoto } from './types'
+import type { FlickrPhoto, FlickrPhotoInfo } from './types'
 
 dotenv.config()
 
@@ -22,7 +22,7 @@ export const trpc = initTRPC.create()
 export const appRouter = trpc.router({
   getPhotos: trpc.procedure
     .input(z.object({ forceRefresh: z.boolean().optional() }))
-    .query(async ({ input }) => {
+    .query<FlickrPhoto[]>(async ({ input }) => {
       const cacheKey = 'recentPhotos'
       if (!input.forceRefresh) {
         const cachedData = cache.get<FlickrPhoto[]>(cacheKey)
@@ -40,7 +40,7 @@ export const appRouter = trpc.router({
 
   searchPhotos: trpc.procedure
     .input(z.object({ tag: z.string(), forceRefresh: z.boolean().optional() }))
-    .query(async ({ input }) => {
+    .query<FlickrPhoto[]>(async ({ input }) => {
       const cacheKey = `searchPhotos:${input.tag}`
       if (!input.forceRefresh) {
         const cachedData = cache.get<FlickrPhoto[]>(cacheKey)
@@ -55,5 +55,14 @@ export const appRouter = trpc.router({
       })
       cache.set(cacheKey, response.photos.photo)
       return response.photos.photo
+    }),
+
+  getPhoto: trpc.procedure
+    .input(z.object({ id: z.string() }))
+    .query<FlickrPhotoInfo>(async ({ input }) => {
+      const response = await flickr('flickr.photos.getInfo', {
+        photo_id: input.id,
+      })
+      return response.photo
     }),
 })
