@@ -28,9 +28,9 @@ export const appRouter = trpc.router({
     .query(async ({ input }) => {
       const response = await flickr('flickr.photos.search', {
         tags: input.tag,
+        per_page: '10',
       })
       return response.photos.photo
     }),
 })
 
-export type AppRouter = typeof appRouter
