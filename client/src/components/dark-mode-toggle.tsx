@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Form } from 'react-bootstrap'
+import { Moon, Sun } from 'react-bootstrap-icons'
 
 const THEME_KEY = 'data-bs-theme'
 
-export function DarkModeToggle() {
+export function DarkModeToggle({ className = '' }: { className?: string }) {
   const [isDarkMode, setIsDarkMode] = useState(false)
 
   useEffect(() => {
@@ -20,13 +20,16 @@ export function DarkModeToggle() {
   }
 
   return (
-    <Form.Check
-      type="switch"
-      id="dark-mode-switch"
-      label="Dark Mode"
-      checked={isDarkMode}
-      onChange={toggleDarkMode}
-      className="ms-3"
-    />
+    <button
+      onClick={toggleDarkMode}
+      className={`btn btn-link p-0 ${className}`}
+      aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+    >
+      {isDarkMode ? (
+        <Sun size={18} color="var(--bs-body-color)" />
+      ) : (
+        <Moon size={18} color="var(--bs-body-color)" />
+      )}
+    </button>
   )
 }

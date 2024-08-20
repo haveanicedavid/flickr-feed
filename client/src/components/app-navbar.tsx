@@ -28,25 +28,30 @@ export function AppNavbar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">
-              All Photos
-            </Nav.Link>
-          </Nav>
-          <Form onSubmit={handleSearch} className="d-flex">
-            <InputGroup>
-              <Form.Control
-                type="text"
-                placeholder="Search tags..."
-                value={searchTag}
-                onChange={(e) => setSearchTag(e.target.value)}
-              />
-              <Button type="submit" variant="primary">
-                Search
-              </Button>
-            </InputGroup>
-          </Form>
-          <DarkModeToggle />
+          <div className="w-100 d-flex flex-column flex-lg-row">
+            <div className="d-flex justify-content-between flex-grow-1 align-items-center mb-2 mb-lg-0">
+              <Nav>
+                <Nav.Link as={Link} to="/">
+                  All Photos
+                </Nav.Link>
+              </Nav>
+              <DarkModeToggle className="d-lg-none" />
+            </div>
+            <Form onSubmit={handleSearch} className="d-flex">
+              <InputGroup>
+                <Form.Control
+                  type="text"
+                  placeholder="Search tags..."
+                  value={searchTag}
+                  onChange={(e) => setSearchTag(e.target.value)}
+                />
+                <Button type="submit" variant="primary">
+                  Search
+                </Button>
+              </InputGroup>
+            </Form>
+            <DarkModeToggle className="d-none d-lg-block ms-lg-3" />
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>
